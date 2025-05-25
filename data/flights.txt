@@ -1,0 +1,3 @@
+AI101,delhi,mumbai,3000.0
+AI102,mumbai,delhi,3000.0
+AI103,delhi,bengaluru,4500.0
