@@ -1,5 +1,7 @@
 This is a console-based Airline Management System developed in Java using Object-Oriented Programming and Layered Architecture. It allows users to add flights, view available flights, book flights, and view all bookings. The data is stored in text files using basic file I/O operations.
 
+To run the program double-click the run.bat file, a menu will be displayed. Adviced to start from option 2 that is, "View Flights" for better experience.
+
 The project is structured into separate folders for better organization:
 app: Contains the main application entry point (Main.java).
 model: Contains model classes like Flight.java and Booking.java.
@@ -24,3 +26,4 @@ Object-Oriented Programming (OOP) principles
 Layered architecture with separation of concerns
 
 This project was created as a group assignment for academic purposes. Some future enhancements may be made depending on feedback and project evaluation.
+Thank You
