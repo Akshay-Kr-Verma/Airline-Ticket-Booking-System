@@ -8,33 +8,41 @@ import java.util.List;
 import java.util.UUID;
 
 public class BookingService {
-    private BookingRepository bookingRepo; // to save and get bookings
-    private FlightRepository flightRepo; // to check flights exist
+    private BookingRepository bookingRepo; // To save and retrieve bookings
+    private FlightRepository flightRepo; // To verify if flights exist
 
-    // constructor to create repository objects
+    // Constructor initializes repository objects
     public BookingService() {
         this.bookingRepo = new BookingRepository();
         this.flightRepo = new FlightRepository();
     }
 
-    // book flight if flight number exists
+    // Method to book a flight if flight number exists
     public boolean bookFlight(String flightNumber, String passengerName) {
-        // check if flight exists or not
+        // Check if flight exists in the system
         if (!flightRepo.flightExists(flightNumber)) {
-            return false; // flight not found so booking failed
+            return false; // Flight not found, booking failed
         }
 
-        // generate random booking id (8 chars)
+        // Generate random booking ID (first 8 chars of UUID)
         String bookingId = UUID.randomUUID().toString().substring(0, 8);
-        // create booking object
+
+        // Create a new Booking object
         Booking booking = new Booking(bookingId, flightNumber, passengerName);
-        // save booking to file
+
+        // Save the booking using repository
         bookingRepo.saveBooking(booking);
-        return true; // booking successful
+
+        return true; // Booking successful
     }
 
-    // get all bookings from repository
+    // Retrieve all bookings from the repository
     public List<Booking> getAllBookings() {
         return bookingRepo.getAllBookings();
+    }
+
+    // Cancel booking by booking ID, returns true if cancelled successfully
+    public boolean cancelBooking(String bookingId) {
+        return bookingRepo.deleteBookingById(bookingId);
     }
 }
